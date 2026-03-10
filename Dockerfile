@@ -1,9 +1,7 @@
-# Dockerfile - Como fazer uma caixinha com seu app
+# Dockerfile - FastAPI com Uvicorn
 
-# Começa com Python (a base)
 FROM python:3.11-slim
 
-# Copia seus arquivos pra dentro da caixinha
 WORKDIR /app
 COPY requirements.txt .
 RUN pip install -r requirements.txt
@@ -11,5 +9,8 @@ RUN pip install -r requirements.txt
 COPY app.py .
 COPY tests.py .
 
-# O que rodar quando a caixinha iniciar
-CMD ["python", "app.py"]
+# ✅ Expõe a porta do FastAPI
+EXPOSE 8000
+
+# ✅ Uvicorn inicia o FastAPI (não python app.py)
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
