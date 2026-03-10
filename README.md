@@ -17,7 +17,7 @@ Acesse: http://localhost:8000/docs (Swagger automático do FastAPI)
 ## 🧪 Rodar os testes
 
 ```bash
-pytest test_app.py -v --cov=app
+pytest tests.py -v --cov=app
 ```
 
 ## 📦 Endpoints
