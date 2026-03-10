@@ -1,4 +1,4 @@
-# 📝 Task Manager API — FastAPI kkk
+# 📝 Task Manager API — FastAPI 
 
 API simples de tarefas com FastAPI, testes automatizados e CI/CD.
 
