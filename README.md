@@ -1,23 +1,38 @@
-# 🚀 Projeto: Introdução a Git, CI e CD
+# 📝 Task Manager API — FastAPI
 
-Este repositório foi criado com o objetivo de demonstrar conceitos fundamentais do desenvolvimento moderno de software utilizando **Git**, **CI (Continuous Integration)** e **CD (Continuous Delivery / Continuous Deployment)**.
+API simples de tarefas com FastAPI, testes automatizados e CI/CD.
 
----
-
-# 📌 O que é Git?
-
-O **Git** é um sistema de controle de versão distribuído utilizado para gerenciar mudanças no código ao longo do tempo.
-
-Ele permite que desenvolvedores:
-
-- Versionem seu código
-- Trabalhem em equipe
-- Voltem para versões anteriores do projeto
-- Criem novas funcionalidades sem afetar o código principal
-
-### Principais comandos Git
-
-Inicializar um repositório:
+## 🚀 Como rodar
 
 ```bash
-git init
+# Instalar dependências
+pip install -r requirements.txt
+
+# Rodar o servidor
+uvicorn app:app --reload
+```
+
+Acesse: http://localhost:8000/docs (Swagger automático do FastAPI)
+
+## 🧪 Rodar os testes
+
+```bash
+pytest test_app.py -v --cov=app
+```
+
+## 📦 Endpoints
+
+| Método | Rota             | Descrição         |
+|--------|------------------|-------------------|
+| GET    | /tasks           | Listar todas      |
+| GET    | /tasks/{id}      | Buscar por ID     |
+| POST   | /tasks           | Criar tarefa      |
+| PUT    | /tasks/{id}      | Atualizar tarefa  |
+| DELETE | /tasks/{id}      | Deletar tarefa    |
+
+## ⚙️ CI/CD
+
+O pipeline `.github/workflows/ci.yml` roda automaticamente no push:
+1. Instala dependências
+2. Roda os testes com cobertura
+3. Faz deploy (quando na branch `main`)
