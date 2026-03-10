@@ -1,0 +1,38 @@
+# ci-cd.yml - Instruções para o robô
+
+name: CI/CD Pipeline
+
+# QUANDO rodar?
+on:
+  push:
+    branches: [main, develop]  # Quando você faz push nessas branches
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # Robô roda no Linux
+
+    steps:
+      # Passo 1: Baixar seu código
+      - uses: actions/checkout@v3
+
+      # Passo 2: Configurar Python
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      # Passo 3: Instalar dependências
+      - name: Instalar dependências
+        run: pip install -r requirements.txt
+
+      # Passo 4: Rodar os testes ⚠️ IMPORTANTE
+      - name: Rodar testes
+        run: pytest tests.py -v
+
+      # Passo 5: Fazer o Docker 🐳
+      - name: Build Docker
+        run: docker build -t meu-app:latest .
+
+      # Passo 6: (BÔNUS) Publicar em um servidor
+      # (vamos ver depois!)
