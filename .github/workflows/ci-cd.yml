@@ -27,7 +27,7 @@ jobs:
 
       - name: Run tests with coverage
         run: |
-          pytest test_app.py -v --cov=app --cov-report=term-missing
+          pytest tests.py -v --cov=app --cov-report=term-missing
 
   deploy:
     name: Deploy (simulado)
