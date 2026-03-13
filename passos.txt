@@ -1,0 +1,10 @@
+1 - ter o projeto no github
+2 - criar o workflow (yml)
+3 - criar uma chave ssh local publica  (id_rsa.pub)
+4 - colocar essa chave local publica no servidor  (id_rsa.pub)
+5 - configurou no repositorio secrets como 
+    (secret>actions)  
+    SERVER_HOST (ip do servidor de destino)
+    SERVER_SSH_KEY (chave privada (id_rsa))
+    SERVER_USER (root) 
+6 - alterou o codigo e a pipe rodou sozinha

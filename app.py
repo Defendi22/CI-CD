@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Optional
 
-app = FastAPI(title="Task Manager API", version="1.0.0")
+app = FastAPI(title="Matheus lindao", version="1.0.0")
 
 tasks = []
 next_id = 1
