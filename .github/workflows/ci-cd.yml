@@ -43,16 +43,21 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-              if [ ! -d "/app" ]; then
-                git clone https://github.com/Defendi22/CI-CD.git /app
-              fi
+            set -e
 
-              cd /app
-              git pull origin main
+            if [ ! -d "/app/.git" ]; then
+              rm -rf /app
+              git clone https://github.com/Defendi22/CI-CD.git /app
+            fi
 
-              docker build -t fastapi-app:latest .
+            cd /app
+            git pull origin main
 
-              docker stop fastapi-app || true
-              docker rm fastapi-app || true
+            ls -la
 
-              docker run -d -p 8000:8000 --name fastapi-app fastapi-app:latest
+            docker build -t fastapi-app:latest .
+
+            docker stop fastapi-app || true
+            docker rm fastapi-app || true
+
+            docker run -d -p 8000:8000 --name fastapi-app fastapi-app:latest
